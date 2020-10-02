@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Page Title</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/myScript.js"></script>
+  </head>
+
+  <body ng-app="MyApp" ng-controller="MyController">
+    <div class="container">
+      <div class="jumbotron">
+        <img src="img/mask2.png" alt="Avatar" class="center">
+
+        <h1 class="text-center">{{ appTitle }}</h1>
+        <p pt-3>
+          The coronavirus COVID-19 is affecting 213 countries and territories
+          around the world and 2 international conveyances. The day is reset
+          after midnight GMT+0. The list of countries and territories and their
+          continental regional classification is based on the United Nations
+          Geoscheme. Sources are provided under "Latest Updates". Learn more
+          about Worldometer's COVID-19 data.
+        </p>
+        <h2 class="text-center">World-wide Status</h2>
+        <hr>
+
+        <!-- #region alldata -->
+        <div class="row text-center">
+          <div class="col-md-4">
+            <div class="card bg-warning text-white">
+              <div class="card-body">
+                <h3>Confirmed Cases</h3>
+                <h3>{{ all_data.confirmed.value }}</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card bg-success text-white">
+              <div class="card-body">
+                <h3>Recovered Cases</h3>
+                <h3>{{ all_data.recovered.value }}</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card bg-danger text-white">
+              <div class="card-body">
+                <h3>Death Cases</h3>
+                <h3>{{ all_data.deaths.value }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- #endregion -->
+
+        <br />
+
+        <!-- #region data filterd by country -->
+        <label>Search by Country : </label>
+        <input
+          type="text"
+          placeholder="Enter country name"
+          class="form-control"
+          ng-model="country"
+          ng-change="get_country_data()"
+        />
+
+        <div class="container-fluid" ng-if="country_data">
+          <h2 class="text-center mt-4 text-uppercase">
+            {{ country }} Status
+          </h2>
+          <div class="row text-center mt-4">
+            <div class="col-md-4">
+              <div class="card bg-warning text-white">
+                <div class="card-body">
+                  <h3>Confirmed Cases</h3>
+                  <h3>{{ country_data.confirmed.value }}</h3>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card bg-success text-white">
+                <div class="card-body">
+                  <h3>Recovered Cases</h3>
+                  <h3>{{ country_data.recovered.value }}</h3>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card bg-danger text-white">
+                <div class="card-body">
+                  <h3>Death Cases</h3>
+                  <h3>{{ country_data.deaths.value }}</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- #endregion -->
+      </div>
+    </div>
+  </body>
+</html>

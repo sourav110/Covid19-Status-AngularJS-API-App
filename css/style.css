@@ -1,0 +1,14 @@
+body{
+    background-color: azure;
+}
+
+img {
+    border-radius: 50%;
+  }
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+  }
